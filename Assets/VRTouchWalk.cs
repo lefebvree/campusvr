@@ -25,7 +25,7 @@ public class VRTouchWalk : MonoBehaviour {
 			// Find the forward direction
 			Vector3 forward = vrCamera.TransformDirection(Vector3.forward);
 			// Tell CharacterController to move forward
-			cc.SimpleMove(forward * speed);
+			cc.Move(forward * speed);
 		}
 	}
 }
