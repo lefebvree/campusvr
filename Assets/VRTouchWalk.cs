@@ -17,15 +17,16 @@ public class VRTouchWalk : MonoBehaviour {
 	void Start() {
 		// Find the CharacterController
 		cc = GetComponent<CharacterController>();
+		vrCamera = Camera.main.transform;
 	}
 	
 	// Update is called once per frame
 	void Update() {
-		foreach(Touch touch in Input.touches) {
+		if(Input.GetButtonDown("Fire1")) {
 			// Find the forward direction
 			Vector3 forward = vrCamera.TransformDirection(Vector3.forward);
 			// Tell CharacterController to move forward
-			cc.Move(forward * speed);
+			cc.Move(forward * speed * Time.deltaTime);
 		}
 	}
 }
