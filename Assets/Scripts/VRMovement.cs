@@ -35,12 +35,16 @@ public class VRMovement : MonoBehaviour {
 		//vrHead = Camera.main.transform;
 	}
 	
-	public void changeMovementType() {
+	public void ChangeMovementType() {
 		test = !test;
 		movementType = movementType + 1;
 		if(movementType == 2) {
 			movementType = 0;
 		}
+	}
+	public void Teleport() {
+		// 407, , 464
+		transform.position = new Vector3(407, 0, 464);
 	}
 	
 	// Update is called once per frame
