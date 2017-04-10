@@ -23,6 +23,8 @@ public class VRMovement : MonoBehaviour {
 	
 	// Angle at witch walk/stop will be triggered (X value of main camera)
 	public float toggleAngle = 25.0f;
+	
+	public bool test = false;
 
 	
 	// Use this for initialization
@@ -31,6 +33,14 @@ public class VRMovement : MonoBehaviour {
 		controller = GetComponent<CharacterController>();
 		// Get the VR Head Camera
 		//vrHead = Camera.main.transform;
+	}
+	
+	public void changeMovementType() {
+		test = !test;
+		movementType = movementType + 1;
+		if(movementType == 2) {
+			movementType = 0;
+		}
 	}
 	
 	// Update is called once per frame
