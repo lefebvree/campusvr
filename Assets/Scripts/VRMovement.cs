@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VRMovement : MonoBehaviour {
 	
@@ -8,6 +9,8 @@ public class VRMovement : MonoBehaviour {
 	//   0 : Walking by looking down
 	//   1 : Flying by touching the screen
 	public int movementType = 0;
+	//max movement type
+	private int maxMovementType = 2;
 	
 	// CharacterController script
 	private CharacterController controller;
@@ -24,7 +27,7 @@ public class VRMovement : MonoBehaviour {
 	// Angle at witch walk/stop will be triggered (X value of main camera)
 	public float toggleAngle = 25.0f;
 	
-	public bool test = false;
+	public Dropdown teleportOption;
 
 	
 	// Use this for initialization
@@ -36,15 +39,26 @@ public class VRMovement : MonoBehaviour {
 	}
 	
 	public void ChangeMovementType() {
-		test = !test;
 		movementType = movementType + 1;
-		if(movementType == 2) {
+		if(movementType == maxMovementType) {
 			movementType = 0;
 		}
 	}
 	public void Teleport() {
-		// 407, , 464
-		transform.position = new Vector3(407, 0, 464);
+		int option = teleportOption.value;
+		print(option);
+		
+		switch(option) {
+			case 0:
+				transform.position = new Vector3(543, 0, 102);
+				break;
+			case 1:
+				transform.position = new Vector3(407, 0, 464);
+				break;
+			case 2:
+				transform.position = new Vector3(572, 0, 330);
+				break;
+		}
 	}
 	
 	// Update is called once per frame
