@@ -44,21 +44,27 @@ public class VRMovement : MonoBehaviour {
 			movementType = 0;
 		}
 	}
+
 	public void Teleport() {
 		int option = teleportOption.value;
-		print(option);
 		
 		switch(option) {
-			case 0:
+			case 1:
+				// Entrance
 				transform.position = new Vector3(543, 0, 102);
 				break;
-			case 1:
-				transform.position = new Vector3(407, 0, 464);
-				break;
 			case 2:
+				// BU
 				transform.position = new Vector3(572, 0, 330);
 				break;
+			case 3:
+				// B.5
+				transform.position = new Vector3(407, 0, 464);
+				break;
 		}
+		
+		// Reset selected value
+		teleportOption.value = 0;
 	}
 	
 	// Update is called once per frame
@@ -82,10 +88,8 @@ public class VRMovement : MonoBehaviour {
 
 			case 1:
 
-				if(Input.GetButtonDown("Fire1") || Input.GetButtonUp("Fire1")) {
-					// Toggle movement
-					moveForward = !moveForward;
-				}
+				if (Input.GetButtonDown("Fire1")) moveForward = true;
+				if (Input.GetButtonUp("Fire1")) moveForward = false;
 				
 				if (moveForward) {
 					// Find the forward direction
